@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
+import Image from 'next/image'
 
 import Navbar from '../../components/navbar'
 import Footer from '../../components/footer'
@@ -28,7 +30,7 @@ export default function DrinkDetail() {
         return (
             <div className='pt-100 text-center'>
                 <h2>No Data Found</h2>
-                <a href='/'><strong>Go Back To Home</strong></a>
+                <Link href='/'><strong>Go Back To Home</strong></Link>
             </div>
         )
     }
@@ -65,7 +67,7 @@ export default function DrinkDetail() {
                 { item &&
                     <div className='flex flex-row justify-center items-center gap-16'>
                         <div className='w-1/3'>
-                            <img src={item.strDrinkThumb} alt='Img Cocktail' className='w-100'/>
+                            <Image src={`${item.strDrinkThumb}`} loader={() => item.strDrinkThumb} alt='Img Cocktail' width={500} height={500}/>
                         </div>
                         <div className='w-2/3 flex flex-col justify-center items-start gap-5'>
                             <h2 className='font-bold text-3xl'>{item.strDrink}</h2>

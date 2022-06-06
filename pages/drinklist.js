@@ -1,14 +1,17 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 function DrinkPosts(props) {
     const item = props.drink
     return (
-        <a className={styles.card} href={`/drinkdetail/${item.idDrink}`}>
-            <img src={item.strDrinkThumb} className='w-full' alt='Cocktails Image'/>
-            <p className='py-4 text-center font-medium text-base'>{item.strDrink}</p>
-        </a>
+        <Link className={styles.card} href={`/drinkdetail/${item.idDrink}`}>
+            <a>
+                <Image src={`${item.strDrinkThumb}`} loader={() => item.strDrinkThumb} alt='Cocktails Image' width={250} height={250}/>
+                <p className='py-4 text-center font-medium text-base'>{item.strDrink}</p>
+            </a>
+        </Link>
     )
 }
 
@@ -50,7 +53,7 @@ export default function DrinkList() {
         return (
             <div className='py-24 text-center'>
                 <h2>No Data Found</h2>
-                <a href='/'><strong>Go Back To Home</strong></a>
+                <Link href='/'><strong>Go Back To Home</strong></Link>
             </div>
         )
     }
