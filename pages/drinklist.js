@@ -7,10 +7,10 @@ function DrinkPosts(props) {
     const item = props.drink
     return (
         <Link className={styles.card} href={`/drinkdetail/${item.idDrink}`}>
-            <>
+            <div className='cursor-pointer'>
                 <Image src={`${item.strDrinkThumb}`} loader={() => item.strDrinkThumb} alt='Cocktails Image' width={250} height={250}/>
                 <p className='py-4 text-center font-medium text-base'>{item.strDrink}</p>
-            </>
+            </div>
         </Link>
     )
 }
